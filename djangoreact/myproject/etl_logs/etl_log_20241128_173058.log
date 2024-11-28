@@ -1,0 +1,3 @@
+2024-11-28 17:31:11,655 - INFO: Total rows to process: 10
+2024-11-28 17:31:11,915 - ERROR: ETL Process Error: 001003 (42000): SQL compilation error:
+syntax error line 1 at position 25 unexpected '('.
