@@ -1,0 +1,2 @@
+2024-11-28 19:30:38,037 - INFO: Total rows to process: 10
+2024-11-28 19:30:38,617 - ERROR: ETL Process Error: 090105 (22000): Cannot perform CREATE TABLE. This session does not have a current database. Call 'USE DATABASE', or use a qualified name.

@@ -1,0 +1,3 @@
+2024-11-29 13:03:06,001 - INFO: Total rows to process: 192886
+2024-11-29 13:06:20,203 - ERROR: ETL Process Error: 001003 (42000): SQL compilation error:
+syntax error line 1 at position 34 unexpected '@stage'.

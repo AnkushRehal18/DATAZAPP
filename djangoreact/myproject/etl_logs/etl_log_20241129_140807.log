@@ -1,0 +1,4 @@
+2024-11-29 14:08:09,885 - INFO: Creating table with SQL: CREATE OR REPLACE TABLE VERY_LARGE_DATA (id INT, data STRING)
+2024-11-29 14:08:10,084 - INFO: Table VERY_LARGE_DATA created successfully.
+2024-11-29 14:08:30,049 - INFO: Total rows to process: 192886
+2024-11-29 14:08:45,809 - INFO: Temporary stage created: verify_stage_chunk_1

@@ -1,0 +1,3 @@
+2024-11-29 13:09:52,746 - INFO: Total rows to process: 192886
+2024-11-29 13:10:03,269 - ERROR: ETL Process Error: 001003 (42000): SQL compilation error:
+syntax error line 1 at position 34 unexpected '@verify'.

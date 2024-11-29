@@ -1,0 +1,4 @@
+2024-11-28 20:31:22,596 - ERROR: Snowflake Connection Error: 002043 (02000): SQL compilation error:
+Object does not exist, or operation cannot be performed.
+2024-11-28 20:31:22,596 - ERROR: ETL Process Error: 002043 (02000): SQL compilation error:
+Object does not exist, or operation cannot be performed.

@@ -1,0 +1,9 @@
+2024-11-29 13:30:04,456 - INFO: Total rows to process: 192886
+2024-11-29 13:30:18,693 - INFO: Uploading data to stage: verify_stage/chunk_1.csv
+2024-11-29 13:30:27,801 - INFO: Copying data from stage to target table with query: 
+                COPY INTO VERY_LARGE_DATA
+                FROM @verify_stage/verify_stage/chunk_1.csv
+                FILE_FORMAT = (TYPE = 'CSV' FIELD_OPTIONALLY_ENCLOSED_BY = '"' SKIP_HEADER = 1);
+                
+2024-11-29 13:30:27,969 - ERROR: ETL Process Error: 001757 (42601): SQL compilation error:
+Table 'VERY_LARGE_DATA' does not exist

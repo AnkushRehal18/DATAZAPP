@@ -1,0 +1,8 @@
+2024-11-29 01:26:04,932 - INFO: Total rows to process: 10
+2024-11-29 01:26:04,944 - INFO: Creating table with SQL: CREATE OR REPLACE TABLE tabletest1 ("STUDENTID" NUMBER, "FIRSTNAME" VARCHAR(16777216), "LASTNAME" VARCHAR(16777216), "ROW_NUM" NUMBER)
+2024-11-29 01:26:05,167 - INFO: Table tabletest1 created successfully.
+2024-11-29 01:26:09,845 - INFO: Chunk 1/1: Transferred 10 rows
+2024-11-29 01:29:08,671 - INFO: Total rows to process: 10
+2024-11-29 01:29:08,679 - INFO: Creating table with SQL: CREATE OR REPLACE TABLE tabletest2 ("STUDENTID" NUMBER, "FIRSTNAME" VARCHAR(16777216), "LASTNAME" VARCHAR(16777216), "ROW_NUM" NUMBER)
+2024-11-29 01:29:08,900 - INFO: Table tabletest2 created successfully.
+2024-11-29 01:29:12,656 - INFO: Chunk 1/1: Transferred 10 rows

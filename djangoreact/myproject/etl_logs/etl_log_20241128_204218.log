@@ -1,0 +1,3 @@
+2024-11-28 20:42:25,651 - INFO: Total rows to process: 10
+2024-11-28 20:42:25,963 - INFO: Table TestTable created successfully
+2024-11-28 20:42:26,019 - ERROR: ETL Process Error: Missing optional dependency: pandas

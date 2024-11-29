@@ -1,0 +1,2 @@
+2024-11-29 13:14:07,329 - INFO: Total rows to process: 192886
+2024-11-29 13:14:19,631 - ERROR: ETL Process Error: 'SSMSToSnowflakeETL' object has no attribute 'upload_to_snowflake_stage'

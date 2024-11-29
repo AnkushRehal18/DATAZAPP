@@ -1,0 +1,2 @@
+2024-11-29 01:20:17,260 - INFO: Total rows to process: 10
+2024-11-29 01:20:17,271 - ERROR: ETL Process Error: cannot access local variable 'data' where it is not associated with a value

@@ -1,0 +1,2 @@
+2024-11-29 01:04:34,210 - INFO: Total rows to process: 10
+2024-11-29 01:04:34,220 - ERROR: ETL Process Error: cannot convert dictionary update sequence element #0 to a sequence

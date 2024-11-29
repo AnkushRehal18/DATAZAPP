@@ -1,0 +1,2 @@
+2024-11-29 13:28:23,509 - INFO: Total rows to process: 192886
+2024-11-29 13:28:34,854 - ERROR: ETL Process Error: a bytes-like object is required, not 'str'

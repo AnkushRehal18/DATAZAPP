@@ -1,0 +1,3 @@
+2024-11-29 13:23:51,558 - INFO: Total rows to process: 192886
+2024-11-29 13:24:05,854 - INFO: Uploading data to stage: verify_stage/chunk_1.csv
+2024-11-29 13:24:06,046 - ERROR: ETL Process Error: 'SnowflakeCursor' object has no attribute 'put_stream'

@@ -1,14 +1,3 @@
-import pyodbc
-import pandas as pd
-import snowflake.connector
-from snowflake.connector.pandas_tools import write_pandas
-from typing import Dict, List, Optional
-import logging
-from datetime import datetime
-import os
-import math
-
-
 class SSMSToSnowflakeETL:
     """
     A robust ETL class for migrating data from SQL Server to Snowflake 
@@ -191,7 +180,7 @@ class SSMSToSnowflakeETL:
                 SELECT * FROM (
                     SELECT *, ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) as row_num 
                     FROM ({query}) subquery
-                ) numbered_query
+                ) AS numbered_query
                 WHERE row_num BETWEEN {offset + 1} AND {offset + self.chunk_size}
                 """
 
@@ -224,10 +213,7 @@ class SSMSToSnowflakeETL:
 
                 self.logger.info(f"Chunk {i+1}/{chunks}: Transferred {nrows} rows")
 
-            return {
-                'total_rows': total_rows_transferred,
-                'total_chunks': total_chunks
-            }
+            return JsonResponse({"msg": "ETL Process Passed", "total_rows": total_rows_transferred, "total_chunks": total_chunks})
 
         except Exception as e:
             self.logger.error(f"ETL Process Error: {e}")
@@ -266,15 +252,18 @@ class SSMSToSnowflakeETL:
 
 
 # Example usage with enhanced configuration
-def main():
+@csrf_exempt
+def load_to_snowflake(request):
+    data = json.loads(request.body)
+
     # Secure configuration management recommended
     snowflake_config = {
-        'user': os.getenv('SNOWFLAKE_USER', ''),
-        'password': os.getenv('SNOWFLAKE_PASSWORD', ''),
-        'account': os.getenv('SNOWFLAKE_ACCOUNT', ''),
-        'warehouse': os.getenv('SNOWFLAKE_WAREHOUSE', ''),
-        'database': os.getenv('SNOWFLAKE_DATABASE', ''),
-        'schema': os.getenv('SNOWFLAKE_SCHEMA', '')
+        'user': data.get('sfUsername'),
+        'password': data.get('sfPassword'),
+        'account': data.get('sfAccount'),
+        'warehouse': data.get('sfWarehouse'),
+        'database': data.get('ssmsDatabase'),
+        'schema': data.get('selectedSchema')
     }
 
     # Initialize ETL with logging and chunk size
@@ -285,20 +274,18 @@ def main():
     )
 
     # Example query
-    query = "SELECT * FROM [export-18]"
+    query = "SELECT * FROM Students"
 
     try:
         result = etl.extract_load_data(
-            server_name='',
-            database_name='',
+            server_name=data.get('ssmsServerName'),
+            database_name=data.get('ssmsDatabase'),
             query=query,
-            target_table=''
+            target_table=data.get('userSelectedTable')
         )
         print(f"Data Transfer Summary: {result}")
+        return JsonResponse({"msg": "passed"})
 
     except Exception as e:
         print(f"ETL Process Failed: {e}")
-
-
-if __name__ == "__main__":
-    main()
+        return JsonResponse({"msg": f"ETL Process Failed: {e}"})
