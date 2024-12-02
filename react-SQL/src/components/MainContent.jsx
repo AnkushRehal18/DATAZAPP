@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Snowlogin from './Snowlogin';
 import SSMSConn from './SSMSlogin';
 
+
+
 const MainContent = () => {
   const [selectedTable1, setSelectedTable1] = useState('');
   const [selectedDatabase, setSelectedDatabase] = useState('');
@@ -117,5 +119,4 @@ const MainContent = () => {
 };
 
 export default MainContent;
-
 

@@ -1,0 +1,4 @@
+2024-12-02 11:26:16,523 - INFO: Total rows to process: 10
+2024-12-02 11:26:16,539 - INFO: Creating table with SQL: CREATE OR REPLACE TABLE studentdata ("STUDENTID" NUMBER, "FIRSTNAME" VARCHAR(16777216), "LASTNAME" VARCHAR(16777216), "ROW_NUM" NUMBER)
+2024-12-02 11:26:16,773 - INFO: Table studentdata created successfully.
+2024-12-02 11:26:20,708 - INFO: Chunk 1/1: Transferred 10 rows

@@ -1,0 +1,5 @@
+2024-11-29 21:12:54,541 - INFO: Total rows to process: 10
+2024-11-29 21:12:54,561 - INFO: Creating table with SQL: CREATE OR REPLACE TABLE Very_small_data ("STUDENTID" NUMBER, "FIRSTNAME" VARCHAR(16777216), "LASTNAME" VARCHAR(16777216), "ROW_NUM" NUMBER)
+2024-11-29 21:12:55,166 - INFO: Table Very_small_data created successfully.
+2024-11-29 21:12:55,516 - ERROR: Failed to insert row #0: {'StudentID': 1, 'FirstName': 'John', 'LastName': 'Doe', 'row_num': 1}. Error: 090073 (22000): Warehouse 'COMPUTE_WH' cannot be resumed because resource monitor 'DAILY_3_CREDIT_LIMIT' has exceeded its quota.
+2024-11-29 21:12:55,516 - ERROR: ETL Process Error: 090073 (22000): Warehouse 'COMPUTE_WH' cannot be resumed because resource monitor 'DAILY_3_CREDIT_LIMIT' has exceeded its quota.
