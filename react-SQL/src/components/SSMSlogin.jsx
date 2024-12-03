@@ -103,10 +103,10 @@ const SSMSConn = () => {
     return (
         <div className="container">
             <div className='Sameline'>
-            <h2><ImDatabase /></h2>
-            <h2>Connect To SSMS</h2>
+                <h2><ImDatabase /></h2>
+                <h2>Connect To SSMS</h2>
             </div>
-            
+
             <br />
 
             {/* Input for server name */}
@@ -164,38 +164,38 @@ const SSMSConn = () => {
                 </div>
             )}
 
-              {/* Connection status display */}
-                 <div className="ConnectionStatus">
-                     <span id="connection-status" className='ConnectionStaus2 text-primary fs-5'>Connection Status:</span>
-                     {connectionStatus === "Connected" ? (
-                        <p className="text-green Connected">Connected</p>
-                    ) : (
-                        <p className="text-red Not-Connected">Not Connected</p>
-                    )}
-                </div>
+            {/* Connection status display */}
+            <div className="ConnectionStatus">
+                <span id="connection-status" className='ConnectionStaus2 text-primary fs-5'>Connection Status:</span>
+                {connectionStatus === "Connected" ? (
+                    <p className="text-green Connected">Connected</p>
+                ) : (
+                    <p className="text-red Not-Connected">Not Connected</p>
+                )}
+            </div>
 
             {/* Render database selection */}
             {connectionStatus === "Connected" && (
                 <div className="database-select-container">
-                <h3 className='fs-5'>Select Database:</h3>
-                <select
-                    value={selectedDatabase}
-                    onChange={(e) => handleDatabaseSelection(e.target.value)}
-                    className="database-select"
-                >
-                    <option value="">-- Select Database --</option>
-                    {databaseData.map((db, index) => (
-                        <option key={index} value={db}>{db}</option>
-                    ))}
-                </select>
-            </div>
-            
+                    <h3 className='fs-5'>Select Database:</h3>
+                    <select
+                        value={selectedDatabase}
+                        onChange={(e) => handleDatabaseSelection(e.target.value)}
+                        className="database-select"
+                    >
+                        <option value="">-- Select Database --</option>
+                        {databaseData.map((db, index) => (
+                            <option key={index} value={db}>{db}</option>
+                        ))}
+                    </select>
+                </div>
+
             )}
 
             {/* Loader for fetching tables */}
             {tableLoading && (
                 <div className="loader-container ">
-                   <PulseLoader color="#2e18c3" />
+                    <PulseLoader color="#2e18c3" />
                 </div>
             )}
 

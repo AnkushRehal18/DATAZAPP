@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Snowlogin from './Snowlogin';
 import SSMSConn from './SSMSlogin';
-
-
+import { HashLoader } from 'react-spinners';
 
 const MainContent = () => {
+  const [loading, setLoading] = useState(false);
+
   const [selectedTable1, setSelectedTable1] = useState('');
   const [selectedDatabase, setSelectedDatabase] = useState('');
   const [selectedSchema, setSelectedSchema] = useState('');
@@ -23,7 +24,6 @@ const MainContent = () => {
   const [ssmsServerName, setSsmsServerName] = useState('');
   const [ssmsDatabase, setSsmsDatabaseName] = useState('');
 
-  // Fetch data from localStorage on component mount
   useEffect(() => {
     const fetchFromLocalStorage = () => {
       const storedTable1 = localStorage.getItem('selectedTable1') || '';
@@ -48,13 +48,6 @@ const MainContent = () => {
       setSsmsPassword(localStorage.getItem('ssmsPassword') || '');
       setSsmsServerName(localStorage.getItem('ssmsServerName') || '');
       setSsmsDatabaseName(localStorage.getItem('ssmsDatabase') || '');
-
-      console.log('Fetched from localStorage:', {
-        storedTable1,
-        storedTable,
-        storedDatabase,
-        storedSchema,
-      });
     };
 
     fetchFromLocalStorage();
@@ -62,10 +55,9 @@ const MainContent = () => {
 
   const handleLoadToSnowflake = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
 
-    // Fetch the latest values from localStorage just before making the API call
     const bodyData = {
-      // selectedTable1: localStorage.getItem('selectedTable1') || '',
       selectedDatabase: localStorage.getItem('selectedDatabase') || '',
       selectedSchema: localStorage.getItem('selectedSchema') || '',
       userSelectedTable: localStorage.getItem('selectedTable1') || '',
@@ -79,8 +71,6 @@ const MainContent = () => {
       ssmsServerName: localStorage.getItem('ssmsServerName') || '',
       ssmsDatabase: localStorage.getItem('ssmsDatabase') || '',
     };
-
-    console.log('Data to be sent to the API:', bodyData);
 
     try {
       const response = await fetch("http://127.0.0.1:8000/api/load_to_snowflake/", {
@@ -97,6 +87,8 @@ const MainContent = () => {
       console.log('API Response:', data);
     } catch (error) {
       console.error('Error:', error);
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
@@ -107,10 +99,16 @@ const MainContent = () => {
         <SSMSConn />
         <Snowlogin />
       </div>
-      <div className="buttonclass">
+
+      <div className="buttonclass" onClick={handleLoadToSnowflake} disabled={loading}>
+        {loading && (
+          <div className="spinner">
+            <HashLoader color="#36d7b7" size={60} />
+          </div>
+        )}
         <div className="loadbtn">
-          <button id="ldbtn" onClick={handleLoadToSnowflake}>
-            LOAD
+          <button id="ldbtn">
+            {loading ? 'LOADING...' : 'LOAD'}
           </button>
         </div>
       </div>
@@ -119,4 +117,3 @@ const MainContent = () => {
 };
 
 export default MainContent;
-

@@ -25,27 +25,27 @@ const SnowflakeConnectForm = () => {
     }
     if (selectedSchema) {
       localStorage.setItem('selectedSchema', selectedSchema);
-    } 
+    }
 
     if (username) {
       localStorage.setItem('sfUsername', username);
-    } 
+    }
     if (password) {
       localStorage.setItem('sfPassword', password);
-    } 
+    }
     if (account) {
       localStorage.setItem('sfAccount', account);
-    } 
+    }
     if (warehouse) {
       localStorage.setItem('sfWarehouse', warehouse);
-    } 
-  }, [selectedDatabase,selectedSchema,selectedTable1])
-  
+    }
+  }, [selectedDatabase, selectedSchema, selectedTable1])
+
 
   // Handle Snowflake login and fetch databases
   const handleConnect = async (e) => {
     e.preventDefault();
-    setLoading(true); 
+    setLoading(true);
 
     try {
       const response = await fetch('http://127.0.0.1:8000/api/snowflake-login/', {
@@ -66,7 +66,7 @@ const SnowflakeConnectForm = () => {
     } catch (error) {
       setConnectionStatus('Not Connected');
       console.error('Error connecting to Snowflake:', error);
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -89,8 +89,8 @@ const SnowflakeConnectForm = () => {
     } catch (error) {
       console.error('Error fetching schemas:', error);
     } finally {
-    setSchemaLoading(false); // Hide loader
-}
+      setSchemaLoading(false); // Hide loader
+    }
   };
 
   // Handle database selection
@@ -108,10 +108,10 @@ const SnowflakeConnectForm = () => {
   return (
     <div className="container">
       <div className='Sameline'>
-      <h2><img src='/snow_logo.png' style={{height:'30px' , width:'30px'}}></img></h2>
-      <h2>Connect To SNOWFLAKE</h2>
+        <h2><img src='/snow_logo.png' style={{ height: '30px', width: '30px' }}></img></h2>
+        <h2>Connect To SNOWFLAKE</h2>
       </div>
-      
+
       <div>
         <label className="Username">Username</label>
         <input
@@ -156,12 +156,12 @@ const SnowflakeConnectForm = () => {
         Connect to SNOWFLAKE
       </button>
 
-       {/* Loader for connection */}
-       {loading && (
-                <div className="loader-container">
-                    <PulseLoader color="#2e18c3" />
-                </div>
-            )}
+      {/* Loader for connection */}
+      {loading && (
+        <div className="loader-container">
+          <PulseLoader color="#2e18c3" />
+        </div>
+      )}
 
       <div className="ConnectionStatus">
         <span id="connection-status" className="ConnectionStatus1 text-primary fs-5">
@@ -195,9 +195,9 @@ const SnowflakeConnectForm = () => {
 
       {/* Loader for fetching tables */}
       {schemaLoading && (
-      <div className="loader-container ">
-      <PulseLoader color="#2e18c3" />
-      </div>
+        <div className="loader-container ">
+          <PulseLoader color="#2e18c3" />
+        </div>
       )}
 
 
@@ -219,27 +219,25 @@ const SnowflakeConnectForm = () => {
         </div>
       )}
 
-       {/* Display selected schmema */}
-       {selectedSchema && (
-                    <div className="SelectedSchema">
-                        <h3 className="SelectedSchema">Selected Schema: {selectedSchema}</h3>
-                    </div>
-                )}
-
-
-        {schemas.length > 0 && (
-         <div className="TargetTable">
-           <label htmlFor="schema-select">Target Table Name:</label>
-         <input 
-          type="text" 
-          id="targetTableName" 
-          value={selectedTable1}
-          onChange={(e) => setSelectedTable(e.target.value)} 
-          />
-          </div>
-           )}
-
+      {/* Display selected schmema */}
+      {selectedSchema && (
+        <div className="SelectedSchema">
+          <h3 className="SelectedSchema">Selected Schema: {selectedSchema}</h3>
         </div>
+      )}
+      {schemas.length > 0 && (
+        <div className="TargetTable">
+          <label htmlFor="schema-select">Target Table Name:</label>
+          <input
+            type="text"
+            id="targetTableName"
+            value={selectedTable1}
+            onChange={(e) => setSelectedTable(e.target.value)}
+          />
+        </div>
+      )}
+
+    </div>
 
   );
 };
